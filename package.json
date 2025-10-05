@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "animate.css": "^4.1.1",
     "daisyui": "^5.1.25",
     "formik": "^2.4.6",
     "next": "15.5.3",
