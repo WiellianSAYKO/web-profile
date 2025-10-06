@@ -1,11 +1,14 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <div 
     id="Home"
     className="flex items-center min-h-screen scroll-smooth pt-10">
       <div className="hero-content flex flex-col lg:flex-row-reverse">
-        <img
+        <Image
           src="/image/hero2.png"
+          alt="hero"
           className="animate__animated animate__fadeIn animate__delay-1s w-100 h-100 rounded-full object-cover shadow-2xl"
         />
         <div className="animate__animated animate__fadeInLeft">

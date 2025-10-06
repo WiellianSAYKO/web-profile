@@ -1,33 +1,29 @@
 "use client";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 import { useRef, useState, useEffect } from "react";
-import { useToast } from "../toast/ToastProvider";
+import { toast } from "sonner";
 
 export default function ContactSection() {
   const formRef = useRef<HTMLFormElement | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
     return () => setIsMounted(false);
   }, []);
-  const { addToast } = (() => {
-    try {
-      return useToast();
-    } catch (e) {
-      // If ToastProvider isn't mounted, fallback to no-op addToast
-      return { addToast: (_: any) => {} } as { addToast: (t: any) => void };
-    }
-  })();
+
   return (
-    <div 
-    id="Contact"
-    className="min-h-screen flex justify-center px-6 bg-gradient-to-r from-blue-500 to-sky-600">
-      <div className="w-full max-w-2xl-md md:max-w-screen-lg lg:max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-emerald-300 mb-6 mt-5">Contact Me</h2>
+    <div
+      id="Contact"
+      className="min-h-screen flex justify-center px-6 bg-gradient-to-r from-blue-500 to-sky-600"
+    >
+      <div className="w-full max-w-2xl md:max-w-screen-lg lg:max-w-5xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-bold text-emerald-300 mb-6 mt-5">
+          Contact Me
+        </h2>
 
         <Formik
           initialValues={{ name: "", email: "", message: "" }}
@@ -38,7 +34,7 @@ export default function ContactSection() {
               .required("Email is required"),
             message: Yup.string().required("Message is required"),
           })}
-              onSubmit={async (_values, { resetForm, setSubmitting }) => {
+          onSubmit={async (_values, { resetForm, setSubmitting }): Promise<void> => {
             if (!formRef.current) return;
 
             try {
@@ -48,17 +44,19 @@ export default function ContactSection() {
                 formRef.current,
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
               );
- 
+
               if (isMounted) {
-                addToast({ message: "Message sent successfully ✅", type: "success" });
-                setSuccess("Message sent successfully ✅");
+                toast.success("✅ Message sent successfully!", {
+                  description: "Thank you for contacting me. I'll get back to you soon!",
+                });
                 resetForm();
               }
             } catch (error) {
               console.error("EmailJS Error:", error);
               if (isMounted) {
-                addToast({ message: "Failed to send message ❌", type: "error" });
-                setSuccess("Failed to send message ❌");
+                toast.error("❌ Failed to send message", {
+                  description: "Please check your internet connection or try again later.",
+                });
               }
             } finally {
               setSubmitting(false);
@@ -127,8 +125,6 @@ export default function ContactSection() {
             </Form>
           )}
         </Formik>
-
-        {success && <p className="mt-4 text-gray-700 font-medium">{success}</p>}
       </div>
     </div>
   );
