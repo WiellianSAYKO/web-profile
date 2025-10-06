@@ -62,30 +62,30 @@ export default function Portfolio() {
         
                         {/* STAR Method */}
                         <div className="mt-4 text-sm space-y-2">
-                          <p>
+                          <div>
                             <span className="font-semibold text-emerald-300">
                               Situation:
                             </span>{" "}
-                            {project.situation}
-                          </p>
-                          <p>
+                           <p className="text-gray-400 mt-2">{project.situation}</p>
+                          </div>
+                          <div>
                             <span className="font-semibold text-emerald-300">
                               Task:
                             </span>{" "}
-                            {project.task}
-                          </p>
-                          <p>
+                           <p className="text-gray-400 mt-2">{project.task}</p>
+                          </div>
+                          <div>
                             <span className="font-semibold text-emerald-300">
                               Action:
                             </span>{" "}
-                            {project.action}
-                          </p>
-                          <p>
+                            <p className="text-gray-400 mt-2">{project.action}</p>
+                          </div>
+                          <div>
                             <span className="font-semibold text-emerald-300">
                               Result:
                             </span>{" "}
-                            {project.result}
-                          </p>
+                            <p className="text-gray-400 mt-2">{project.result}</p>
+                          </div>
                         </div>
         
                         {/* Technologies */}

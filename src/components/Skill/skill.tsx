@@ -46,7 +46,7 @@ export default function Skill() {
             className="bg-neutral-900 p-8 rounded-xl flex flex-col items-center shadow-md hover:scale-105 transition"
           >
             {skill.icon}
-            <p className="mt-3 text-sm font-medium">{skill.name}</p>
+            <p className="mt-3 text-sm font-medium text-white">{skill.name}</p>
           </div>
         ))}
       </div>

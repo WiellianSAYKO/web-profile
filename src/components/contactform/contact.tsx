@@ -74,7 +74,7 @@ export default function ContactSection() {
                   type="text"
                   name="name"
                   placeholder="Your Name"
-                  className="w-full block border border-gray-300 rounded-lg p-4 text-lg "
+                  className="w-full block border border-gray-300 rounded-lg p-4 text-lg text-white"
                 />
                 <ErrorMessage
                   name="name"
@@ -89,7 +89,7 @@ export default function ContactSection() {
                   type="email"
                   name="email"
                   placeholder="Your Email"
-                  className="w-full block border border-gray-300 rounded-lg p-4 text-lg"
+                  className="w-full block border border-gray-300 rounded-lg p-4 text-lg text-white"
                 />
                 <ErrorMessage
                   name="email"
@@ -105,7 +105,7 @@ export default function ContactSection() {
                   name="message"
                   placeholder="Your Message"
                   rows={6}
-                  className="w-full block border border-gray-300 rounded-lg p-4 text-lg"
+                  className="w-full block border border-gray-300 rounded-lg p-4 text-lg text-white"
                 />
                 <ErrorMessage
                   name="message"

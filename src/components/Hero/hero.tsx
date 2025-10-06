@@ -9,6 +9,9 @@ export default function Hero() {
         <Image
           src="/image/hero2.png"
           alt="hero"
+          width={400} // ✅ tambahkan ukuran sesuai dimensi gambarmu
+          height={400}
+          priority 
           className="animate__animated animate__fadeIn animate__delay-1s w-100 h-100 rounded-full object-cover shadow-2xl"
         />
         <div className="animate__animated animate__fadeInLeft">
